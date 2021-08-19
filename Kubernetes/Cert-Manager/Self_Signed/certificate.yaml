@@ -9,6 +9,7 @@ metadata:
   name: selfsigned-certificate
   namespace: selfsigned-certs
 spec:
+  commonName: my-selfsigned
   dnsNames:
     - example.com
   secretName: selfsigned-cert-tls

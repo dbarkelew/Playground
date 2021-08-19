@@ -9,6 +9,7 @@ metadata:
   name: ca-signed-certificate
   namespace: selfsigned-certs
 spec:
+  commonName: ca-signed
   dnsNames:
     - example.com
     - Numuhukumakiakiaialunamor.ddnsgeek.com
