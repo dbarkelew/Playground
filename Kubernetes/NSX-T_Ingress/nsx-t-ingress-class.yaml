@@ -3,6 +3,7 @@ kind: IngressClass
 metadata:
   name: nsx
   annotations:
-    ingressclass.kubernetes.io/is-default-class: true
+    ingressclass.kubernetes.io/is-default-class: "true"
 spec:
   controller: k8s.io/nsx
+  
