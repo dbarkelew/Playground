@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - example.example.com
+    - aincrad.ddnsgeek.com
     secretName: quickstart-example-tls
   rules:
-  - host: example.example.com
+  - host: aincrad.ddnsgeek.com
     http:
       paths:
       - path: /
