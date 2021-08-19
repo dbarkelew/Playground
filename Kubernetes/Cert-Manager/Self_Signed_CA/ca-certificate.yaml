@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: selfsigned-certs
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ca-signed-certificate
+  namespace: selfsigned-certs
+spec:
+  dnsNames:
+    - example.com
+    - Numuhukumakiakiaialunamor.ddnsgeek.com
+    - aincrad.ddnsgeek.com
+  secretName: ca-signed-cert-tls
+  issuerRef:
+    name: my-ca-issuer
