@@ -1,26 +1,4 @@
 apiVersion: cluster.x-k8s.io/v1beta1
-kind: Cluster
-metadata:
-  labels:
-    cni: examplecluster-crs-0
-  name: examplecluster
-spec:
-  clusterNetwork:
-    pods:
-      cidrBlocks:
-        - 192.168.0.0/16
-  topology:
-    class: quick-start
-    controlPlane:
-      replicas: 1
-    version: 1.23.5
-    workers:
-      machineDeployments:
-        - class: default-worker
-          name: md-0
-          replicas: 1
----
-apiVersion: cluster.x-k8s.io/v1beta1
 kind: ClusterClass
 metadata:
   name: quick-start
@@ -54,7 +32,6 @@ spec:
               apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
               kind: AWSMachineTemplate
               name: quick-start-worker-machinetemplate
-
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: AWSClusterTemplate
@@ -127,3 +104,25 @@ spec:
           name: '{{ ds.meta_data.local_hostname }}'
           kubeletExtraArgs:
             cloud-provider: aws
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: examplecluster-crs-0
+  name: examplecluster
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 192.168.0.0/16
+  topology:
+    class: quick-start
+    controlPlane:
+      replicas: 1
+    version: 1.23.5
+    workers:
+      machineDeployments:
+        - class: default-worker
+          name: md-0
+          replicas: 1
