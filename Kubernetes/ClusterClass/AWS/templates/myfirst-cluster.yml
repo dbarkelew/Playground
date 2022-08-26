@@ -1,0 +1,30 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: myfirst-crs-0
+  name: myfirst-cluster
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: myfirst
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: region
+      value: us-west-2
+    - name: sshKeyName
+      value: default
+    - name: controlPlaneMachineType
+      value: t3.large
+    - name: workerMachineType
+      value: t3.large
+    version: 1.23.3
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 1
